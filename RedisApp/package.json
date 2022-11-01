@@ -6,13 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "startProducer": "ts-node ./producer.ts",
-
-    "startQueue" : "ts-node ./queueManager.ts",
-    "startConsumer" : "ts-node ./consumer.ts"
+    "startQueue": "ts-node ./queueManager.ts",
+    "startConsumer": "ts-node ./consumer.ts",
+    "startServer": "ts-node ./server.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
     "redis-smq": "^7.1.3",
     "redis-smq-common": "^1.0.4",
     "typescript": "^4.8.4"
