@@ -1,0 +1,23 @@
+{
+  "name": "test-redis-smq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "startProducer": "ts-node ./producer.ts",
+
+    "startQueue" : "ts-node ./queueManager.ts",
+    "startConsumer" : "ts-node ./consumer.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "redis-smq": "^7.1.3",
+    "redis-smq-common": "^1.0.4",
+    "typescript": "^4.8.4"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}
