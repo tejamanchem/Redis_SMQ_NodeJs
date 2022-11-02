@@ -7,8 +7,9 @@ producer.run((err) => {
    const message = new Message();
    message
            .setBody({hello: `${body.data}`})
-           .setScheduledCRON(`${body.cronExpression}`)
+         
            .setQueue('test_queue'); // setting up a direct exchange
+           //   .setScheduledCRON(`${body.cronExpression}`)
           
  
     //   .setTTL(3600000) // message expiration (in millis) 

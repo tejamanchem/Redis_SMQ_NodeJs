@@ -1,12 +1,14 @@
 'use strict';
 
-import { Consumer } from  'redis-smq'
+import { Consumer, MessageManager } from  'redis-smq'
 
 const consumer = new Consumer();
 
 const messageHandler = (msg:any, cb:any) => {
    const payload = msg.getBody();
    console.log('Message payload', payload);
+   console.log(msg);
+   console.log(cb);
    cb(); // acknowledging the message
 };
 
