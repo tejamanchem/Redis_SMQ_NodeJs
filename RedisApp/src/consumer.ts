@@ -6,9 +6,9 @@ const consumer = new Consumer();
 
 const messageHandler = (msg:any, cb:any) => {
    const payload = msg.getBody();
-   console.log('Message payload', payload);
-   console.log(msg);
-   console.log(cb);
+    console.log('Message payload', payload);
+   // console.log(msg);
+   // console.log(cb);
    cb(); // acknowledging the message
 };
 

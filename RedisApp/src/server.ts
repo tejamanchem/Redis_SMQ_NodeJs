@@ -3,7 +3,7 @@ let express = require('express');
 const { QueueManager } = require('redis-smq');
 const config = require('./config')
  import {producer} from "./producer"
-import {  getMessages } from './queueManager';
+import { getALLMessages,getMessageBySeqId,deleteMessageInQueue,myQueueManager} from './queueManager';
 var bodyParser = require('body-parser');
 
 
@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 app.post('/job', async(req:any, res:any) => {
     console.log("sending message");
+     let queueExists = myQueueManager(req.body.queueName)
     let result = producer(req.body)
     res.send(`pushed new message into queue`)
 });
@@ -24,10 +25,24 @@ app.post('/job', async(req:any, res:any) => {
 
 app.get('/jobs', async(req:any, res:any) => {
     console.log("sending message");
-    let result = getMessages();
+    let result = getALLMessages();
     console.log(result);
-    res.send(`pushed new message into queue`);
+    res.send(`messages from the queue ${result}`);
 });
+
+app.delete('/job/delete',async(req:any,res:any)=>{
+    console.log('this is delete request')
+    let result = deleteMessageInQueue(req.query.seqId)
+    res.send(`deleted message in queue ${result}`)
+})
+
+// app.get('/jobs/queue', async(req:any, res:any) => {
+//     console.log("sending message");
+//     let result = deleteMessages(req.params.seqId);
+//     console.log(result);
+//     res.send(`messages from the queue ${result}`);
+// });
+
 
 
 
